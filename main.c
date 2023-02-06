@@ -5,34 +5,50 @@
 #include "ModulOperasi_Naufal.h"
 #include "ModulOperasi_Mahira.h"
 int main()	{
-	int opcion;
+	int option;
 	char temp[10];
 	do	{
 			printf("--------------------------------------------------------------");
 			printf("\n ===========>    Scientific Calculator  <==================\n");
 		    printf("==============================================================");
 		    printf("\n\n\n");
-			printf("1).test\n");
+			printf("1).Penjumlahan\n");
+			printf("2).Pengurangan\n");
+			printf("3).Perkalian\n");
+			printf("4).Pembagian\n");
+			printf("5).Perpangkatan\n");
+			printf("6).Persen\n");
 			fgets(temp,10,stdin);
-			opcion  = atoi(temp);
-			switch(opcion)	{
+			option  = atoi(temp);
+			switch(option)	{
 				case 1:
-				system("pause");
+					tampilJumlah();
+					system("cls");
 				break;
 				case 2:
-					
-				   system("pause");
+					tampilKurang();
+					system("cls");
 				break;
 				case 3:
-				system("pause");
+					tampil_perkalian();
+					system("cls");
 				break;
 				case 4:
-				system("pause");
+					tampilPembagian();
+					system("cls");
+				break;
+				case 5:
+					tampil_perpangkatan();
+					system("cls");
+				break;
+				case 6:
+					tampilPersen();
+					system("cls");
 				break;
 				default:
-			   	system("pause");
+			   		option = 0;
 				break;
 			}
-	}while(opcion != 4);
+	}while(option != 0);
 	return 0;
 }
