@@ -1,6 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
-
+#include "ModulOperasiTendy.h"
+#include "ModulOperasi_Agista.h"
+#include "ModulOperasi_Naufal.h"
+#include "ModulOperasi_Mahira.h"
 int main()	{
 	int opcion;
 	char temp[10];
@@ -17,6 +20,7 @@ int main()	{
 				system("pause");
 				break;
 				case 2:
+					
 				   system("pause");
 				break;
 				case 3:
