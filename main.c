@@ -75,7 +75,7 @@ int main()	{
 					system("pause");
 				break;
 				case 12:
-					tampil();
+					tampillg();
 					system("pause");
 				break;
 				default:
