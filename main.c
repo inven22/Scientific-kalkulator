@@ -1,3 +1,5 @@
+//Ahmad al fajri
+
 #include<stdio.h>
 #include<stdlib.h>
 #include "ModulOperasiTendy.h"
