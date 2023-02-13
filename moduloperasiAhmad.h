@@ -1,6 +1,6 @@
 #ifndef modulOperasi_Ahmad_h
 #define modulOperasi_Ahmad_h
-
+void tampillg
 
 
 #include <stdio.h>
