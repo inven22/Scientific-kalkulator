@@ -6,6 +6,7 @@
 #include "ModulOperasi_Agista.h"
 #include "ModulOperasi_Naufal.h"
 #include "ModulOperasi_Mahira.h"
+#include "ModulOperasi_Ahmad.h"
 int main()	{
 	int option;
 	char temp[10];
