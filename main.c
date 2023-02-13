@@ -23,27 +23,27 @@ int main()	{
 			switch(option)	{
 				case 1:
 					tampilJumlah();
-					system("cls");
+					system("pause");
 				break;
 				case 2:
 					tampilKurang();
-					system("cls");
+					system("pause");
 				break;
 				case 3:
 					tampil_perkalian();
-					system("cls");
+					system("pause");
 				break;
 				case 4:
 					tampilPembagian();
-					system("cls");
+					system("pause");
 				break;
 				case 5:
 					tampil_perpangkatan();
-					system("cls");
+					system("pause");
 				break;
 				case 6:
 					tampilPersen();
-					system("cls");
+					system("pause");
 				break;
 				default:
 			   		option = 0;
