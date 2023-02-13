@@ -1,5 +1,4 @@
-#ifndef modulOperasi_Naufal_h
-#define modulOperasi_Naufal_h
+
 
 
 
