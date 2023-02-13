@@ -1,8 +1,10 @@
-#ifndef header_H
-#define header_H
+#ifndef MOdulOperasi_Mahira_H
+#define MOdulOperasi_Mahira_H
 
 float persen(float bil, float per);
 void tampilPersen();
+int faktorial(int bil);
+void tampilFaktorial();
 
 #endif
 
@@ -26,4 +28,29 @@ void tampilPersen()
 	float bil1, per1, hasil;
 	hasil = persen(bil1, per1);
 	printf("%.2f", hasil);
+}
+
+int faktorial(int bil)
+{
+	scanf("%d", &bil);
+	if(bil == 0)
+	{
+		return 1;
+	}
+	else{
+		int hasil = 1, i = 0;
+		while(i < bil)
+		{
+			hasil = hasil*(bil-i);
+			i++;
+		}
+		return hasil;	
+	}
+}
+
+void tampilFaktorial()
+{
+	int jumlah, angka;
+	jumlah = faktorial(angka);
+	printf("%d", jumlah);
 }
