@@ -5,9 +5,13 @@ void tampil_perpangkatan();
 int Perpangkatan(int bilangan, int pangkat);
 int Perkalian(int bilangan1, int bilangan2);
 void tampil_perkalian();
-
+void input(char *operasi);
+void input_matriks();
+double akar_pangkat_n(int power,double konst);
+void tampil_akar();
 #endif
 #include<stdio.h>
+#include<math.h>
 
 
 
@@ -53,3 +57,45 @@ int Perkalian(int bilangan1, int bilangan2){
 	printf("hasilnya adalah %d",hasil);
 	printf("\n");
  }
+ void input(char *operasi){
+	printf("masukkan operasi:");
+	scanf("%40s",&*operasi);
+	printf("\n");
+//	printf("%s",operasi);
+}
+void tampil_akar(){
+	double x, root;
+    int n;
+
+    printf("masukkan angka: ");
+    scanf("%lf", &x);
+
+    printf("akar pangkat ke-: ");
+    scanf("%d", &n);
+    root=akar_pangkat_n(n,x);
+    printf("hasilnya adalah %.2lf",root);
+}
+double akar_pangkat_n(int power,double konst){
+	int a;
+	double root;
+
+    root = pow(konst, 1.0/power);
+	return root;
+}
+
+//void input_matriks(){
+//	int baris,kolom,i=0,j=0,k;
+//	int matriks[baris][kolom];
+//	printf("masukkan baris matriks");
+//	scanf("%d",&baris);
+//	printf("masukkan kolom matriks");
+//	scanf("%d",&kolom);
+//
+//for(int i=0;i>baris+1;i++){
+//	for(int j=0;j>kolom+1;j++){
+//		printf("masukkan matriks ke %d,%d:",i,j);
+//		scanf("%d",&k);
+//		matriks[i][j]=k;
+//}
+//}
+//}
