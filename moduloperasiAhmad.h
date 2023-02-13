@@ -1,3 +1,8 @@
+#ifndef modulOperasi_Naufal_h
+#define modulOperasi_Naufal_h
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
