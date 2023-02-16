@@ -1,56 +1,52 @@
-#ifndef MOdulOperasi_Mahira_H
+ #ifndef MOdulOperasi_Mahira_H
 #define MOdulOperasi_Mahira_H
 
-float persen(float bil, float per);
-void tampilPersen();
+int persen(int bil, int per);
+//void tampilPersen();
 int faktorial(int bil);
-void tampilFaktorial();
+//void tampilFaktorial();
 
 #endif
 
 #include <stdio.h>
 #include <math.h>
 
-float persen(float bil, float per)
+int persen(int bil, int per)
 {
-	float hasil;
-	printf("kalkulator persen\n");
-	printf("Masukkan angka ");
-	scanf("%f", &bil);
-	printf("Masukkan persen ");
-	scanf("%f", &per);
-	hasil = bil * per/100;
-	return hasil;
+	double result;
+	result = bil * per/100;
+	return result;
 }
 
-void tampilPersen()
-{
-	float bil1, per1, hasil;
-	hasil = persen(bil1, per1);
-	printf("%.2f", hasil);
-}
 
-int faktorial(int bil)
+int faktorial(int a)
 {
-	scanf("%d", &bil);
-	if(bil == 0)
+	scanf("%d", &a);
+	if(a == 0)
 	{
 		return 1;
 	}
 	else{
-		int hasil = 1, i = 0;
-		while(i < bil)
+		int result = 1, i = 0;
+		while(i < a)
 		{
-			hasil = hasil*(bil-i);
+			result = result*(a-i);
 			i++;
 		}
-		return hasil;	
+		return result;	
 	}
 }
 
-void tampilFaktorial()
-{
-	int jumlah, angka;
-	jumlah = faktorial(angka);
-	printf("%d", jumlah);
-}
+//void tampilPersen()
+//{
+//	float bil1, per1, hasil;
+//	hasil = persen(bil1, per1);
+//	printf("%.2f", hasil);
+//}
+
+//void tampilFaktorial()
+//{
+//	int jumlah, angka;
+//	jumlah = faktorial(angka);
+//	printf("%d", jumlah);
+//}

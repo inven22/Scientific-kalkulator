@@ -1,14 +1,14 @@
 #ifndef ModulOperasi_Tendy_h
 #define ModulOperasi_Tendy_h
 
-void tampil_perpangkatan();
+//void tampil_perpangkatan();
 int Perpangkatan(int bilangan, int pangkat);
 int Perkalian(int bilangan1, int bilangan2);
-void tampil_perkalian();
-void input(char *operasi);
-void input_matriks();
-double akar_pangkat_n(int power,double konst);
-void tampil_akar();
+//void tampil_perkalian();
+//void input(char *operasi);
+//void input_matriks();
+double akar_pangkat_n(int power,int konst);
+//void tampil_akar();
 #endif
 #include<stdio.h>
 #include<math.h>
@@ -33,55 +33,61 @@ int Perpangkatan(int bilangan, int pangkat){
 	}
  	
  }
- void tampil_perpangkatan(){
- 	int bilangan1, pangkat,hasil;
-	printf("masukkan bilangan:");
-	scanf("%d",&bilangan1);
-	printf("masukkan pangkat:");
-	scanf("%d",&pangkat);
-	hasil=Perpangkatan(bilangan1,pangkat);\
-	printf("hasilnya adalah %d",hasil);
-	printf("\n");
-	
- }
 int Perkalian(int bilangan1, int bilangan2){
  	return bilangan1*bilangan2;
  }
- void tampil_perkalian(){
- 	int bilangan1,bilangan2, pangkat,hasil;
-	printf("masukkan bilangan 1 :");
-	scanf("%d",&bilangan1);
-	printf("masukkan bilangan 2 :");
-	scanf("%d",&bilangan2);
-	hasil=Perkalian(bilangan1,bilangan2);\
-	printf("hasilnya adalah %d",hasil);
-	printf("\n");
- }
- void input(char *operasi){
-	printf("masukkan operasi:");
-	scanf("%40s",&*operasi);
-	printf("\n");
-//	printf("%s",operasi);
-}
-void tampil_akar(){
-	double x, root;
-    int n;
+ 
+int akarPangkatN(int power,int konst){
+//	int a;
+	double result;
 
-    printf("masukkan angka: ");
-    scanf("%lf", &x);
-
-    printf("akar pangkat ke-: ");
-    scanf("%d", &n);
-    root=akar_pangkat_n(n,x);
-    printf("hasilnya adalah %.2lf",root);
+    result = pow(konst, 1.0/power);
+	return result;
 }
-double akar_pangkat_n(int power,double konst){
-	int a;
-	double root;
+ 
+// void tampil_perkalian(){
+// 	int bilangan1,bilangan2, pangkat,hasil;
+//	printf("masukkan bilangan 1 :");
+//	scanf("%d",&bilangan1);
+//	printf("masukkan bilangan 2 :");
+//	scanf("%d",&bilangan2);
+//	hasil=Perkalian(bilangan1,bilangan2);\
+//	printf("hasilnya adalah %d",hasil);
+//	printf("\n");
+// }
+// void tampil_perpangkatan(){
+// 	int bilangan1, pangkat,hasil;
+//	printf("masukkan bilangan:");
+//	scanf("%d",&bilangan1);
+//	printf("masukkan pangkat:");
+//	scanf("%d",&pangkat);
+//	hasil=Perpangkatan(bilangan1,pangkat);\
+//	printf("hasilnya adalah %d",hasil);
+//	printf("\n");
+//	
+// }
 
-    root = pow(konst, 1.0/power);
-	return root;
-}
+// 
+// void input(char *operasi){
+//	printf("masukkan operasi:");
+//	scanf("%40s",&*operasi);
+//	printf("\n");
+////	printf("%s",operasi);
+//}
+
+//void tampil_akar(){
+//	double x, root;
+//    int n;
+//
+//    printf("masukkan angka: ");
+//    scanf("%lf", &x);
+//
+//    printf("akar pangkat ke-: ");
+//    scanf("%d", &n);
+//    root=akar_pangkat_n(n,x);
+//    printf("hasilnya adalah %.2lf",root);
+//}
+
 
 //void input_matriks(){
 //	int baris,kolom,i=0,j=0,k;
