@@ -9,6 +9,11 @@
 #include "ModulOperasiAhmad.h"
 
 int main()	{
-	tampil();
+	char operasi[100];
+	double hasil;
+	printf("enter ekspresi");
+	fgets(operasi,100,stdin);
+	hasil=evaluasi_ekspresi(operasi);
+	printf("hasil :%lf",hasil);
 	return 0;
 }
