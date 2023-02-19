@@ -1,6 +1,10 @@
 #ifndef ModulOperasi_Tendy_h
 #define ModulOperasi_Tendy_h
-<<<<<<< HEAD
+//<<<<<<< Agista
+//<<<<<<< HEAD
+=======
+//<<<<<<< HEAD
+//>>>>>>> master
 #define MAX_LENGTH 100
 //kamus
 typedef struct{
@@ -24,7 +28,6 @@ int pop_oprtr(Stack *s);
 int is_operator(char c);
 int getpriority(char x);
 int evaluasi_ekspresi(char* ekspresi);
-=======
 
 //void tampil_perpangkatan();
 int Perpangkatan(int bilangan, int pangkat);
@@ -32,9 +35,11 @@ int Perkalian(int bilangan1, int bilangan2);
 //void tampil_perkalian();
 //void input(char *operasi);
 //void input_matriks();
+//double akar_pangkat_n(int power,int konst);
+//void tampil_akar();
 double akar_pangkat_n(int power,int konst);
 //void tampil_akar();
->>>>>>> master
+
 #endif
 #include <stdio.h>
 #include <stdlib.h>
@@ -117,10 +122,11 @@ int akarPangkatN(int power,int konst){
 //    printf("hasilnya adalah %.2lf",root);
 //}
 
-<<<<<<< HEAD
-    root = pow(konst, 1.0/power);
+
+/*    root = pow(konst, 1.0/power);
 	return root;
-}
+}*/
+
 void push_oprtr(Stack *s,char item){
 	 if (s->top_operator < MAX_LENGTH - 1) {
         s->top_operator++;
@@ -137,8 +143,6 @@ void push_operand(Stack *s,int item){
         printf("Stack is full\n");
     }
 }
-=======
->>>>>>> master
 
 int pop_operand(Stack *s){
 	 if (s->top_operand >= 0) {
@@ -163,7 +167,7 @@ int pop_oprtr(Stack *s){
 }
 
 int is_operator(char c){
-	if(c=='+'||c=='-'||c=='*'||c=='/'||c=='^'||c=='s'||c=='c'||c=='t'){
+	if(c=='+'||c=='-'||c=='*'||c=='/'||c=='^'||c=='r'||c=='mod'||c=='s'||c=='c'||c=='t'){
 		return 1;
 	}else{
 		return 0;
@@ -178,6 +182,11 @@ int getpriority(char x){
 		return 2;
 	}else if(x=='^'){
 		return 3;
+
+	}else if(x=='r'){
+		return 4;
+	}else if(x=='mod'){
+		return 5;
 	}
 	
 	
@@ -229,6 +238,12 @@ int evaluasi_ekspresi(char* ekspresi){
 					case'^':
 						hasil=pow(opr2,opr1);
 						break;
+					case'r':
+						hasil=round(opr1);
+						break;
+					case'mod':
+						hasil=opr2%opr1;	
+						break;
 			 }
 				push_operand(&s,hasil);
 				
@@ -257,6 +272,12 @@ int evaluasi_ekspresi(char* ekspresi){
 						break;
 					case'^':
 						hasil=Perpangkatan(opr2,opr1);
+						break;
+					case'r':
+						hasil=round(opr1);
+						break;
+					case'mod':
+						hasil=opr2%opr1;	
 						break;
 			 }
 				push_operand(&s,hasil);
