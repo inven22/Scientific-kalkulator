@@ -1,6 +1,10 @@
 #ifndef ModulOperasi_Tendy_h
 #define ModulOperasi_Tendy_h
+
 #define phi 3.14
+
+
+
 #define MAX_LENGTH 100
 //kamus
 typedef struct{
@@ -23,7 +27,11 @@ float pop_operand(Stack *s);
 int pop_oprtr(Stack *s);
 int is_operator(char c);
 int getpriority(char x);
+
 float evaluasi_ekspresi(char* ekspresi);
+
+
+int evaluasi_ekspresi(char* ekspresi);
 
 
 //void tampil_perpangkatan();
@@ -33,6 +41,11 @@ int Perkalian(int bilangan1, int bilangan2);
 //void input(char *operasi);
 //void input_matriks();
 //double akar_pangkat_n(int power,int konst);
+
+
+//void tampil_akar();
+double akar_pangkat_n(int power,int konst);
+
 //void tampil_akar();
 
 #endif
@@ -75,6 +88,60 @@ float Perpangkatan(float bilangan, float pangkat){
  	
  }
 
+
+    result = pow(konst, 1.0/power);
+	return result;
+}
+ 
+// void tampil_perkalian(){
+// 	int bilangan1,bilangan2, pangkat,hasil;
+//	printf("masukkan bilangan 1 :");
+//	scanf("%d",&bilangan1);
+//	printf("masukkan bilangan 2 :");
+//	scanf("%d",&bilangan2);
+//	hasil=Perkalian(bilangan1,bilangan2);\
+//	printf("hasilnya adalah %d",hasil);
+//	printf("\n");
+// }
+// void tampil_perpangkatan(){
+// 	int bilangan1, pangkat,hasil;
+//	printf("masukkan bilangan:");
+//	scanf("%d",&bilangan1);
+//	printf("masukkan pangkat:");
+//	scanf("%d",&pangkat);
+//	hasil=Perpangkatan(bilangan1,pangkat);\
+//	printf("hasilnya adalah %d",hasil);
+//	printf("\n");
+//	
+// }
+
+// 
+// void input(char *operasi){
+//	printf("masukkan operasi:");
+//	scanf("%40s",&*operasi);
+//	printf("\n");
+////	printf("%s",operasi);
+//}
+
+//void tampil_akar(){
+//	double x, root;
+//    int n;
+//
+//    printf("masukkan angka: ");
+//    scanf("%lf", &x);
+//
+//    printf("akar pangkat ke-: ");
+//    scanf("%d", &n);
+//    root=akar_pangkat_n(n,x);
+//    printf("hasilnya adalah %.2lf",root);
+//}
+
+
+/*    root = pow(konst, 1.0/power);
+	return root;
+}*/
+
+
 void push_oprtr(Stack *s,char item){
 	 if (s->top_operator < MAX_LENGTH - 1) {
         s->top_operator++;
@@ -115,7 +182,11 @@ int pop_oprtr(Stack *s){
 }
 
 int is_operator(char c){
+
 	if(c=='+'||c=='-'||c=='*'||c=='/'||c=='^'||c=='s'||c=='c'||c=='t'||c=='!'){
+=======
+	if(c=='+'||c=='-'||c=='*'||c=='/'||c=='^'||c=='r'||c=='mod'||c=='s'||c=='c'||c=='t'){
+
 		return 1;
 	}else{
 		return 0;
@@ -134,6 +205,12 @@ int getpriority(char x){
 		return 3;
 	}else if(x=='!'){
 		return 4;
+
+	}else if(x=='r'){
+		return 4;
+	}else if(x=='mod'){
+		return 5;
+
 	}
 	
 }
@@ -194,11 +271,19 @@ float evaluasi_ekspresi(char* ekspresi){
 					case'^':
 						hasil=pow(opr2,opr1);
 						break;
+
 					case's':
 					  	hasil=sin(opr1*phi/180);
 					  	break;
 					case'!':
 						hasil=factorial(opr1);
+
+					case'r':
+						hasil=round(opr1);
+						break;
+					case'mod':
+						hasil=opr2%opr1;	
+
 						break;
 			 }
 				push_operand(&s,hasil);
@@ -232,11 +317,19 @@ float evaluasi_ekspresi(char* ekspresi){
 					case'^':
 						hasil=Perpangkatan(opr2,opr1);
 						break;
+
 					case's':
 					  	hasil=sin(opr1*phi/180);
 					  	break;
 					case'!':
 						hasil=factorial(opr1);
+
+					case'r':
+						hasil=round(opr1);
+						break;
+					case'mod':
+						hasil=opr2%opr1;	
+
 						break;
 			 }
 				push_operand(&s,hasil);
