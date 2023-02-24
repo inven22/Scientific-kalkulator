@@ -1,56 +1,70 @@
-#ifndef MOdulOperasi_Mahira_H
-#define MOdulOperasi_Mahira_H
+#ifndef ModulOperasi_Mahira_H
+#define ModulOperasi_Mahira_H
+#define phi 3.14159265358979323846
 
-float persen(float bil, float per);
-void tampilPersen();
-int faktorial(int bil);
-void tampilFaktorial();
+float persen(float bil);
+//void tampilPersen();
+float faktorial(float bil);
+//void tampilFaktorial();
+float asinus(float bil);
+float acosinus(float bil);
+float atangen(float bil);
 
 #endif
 
 #include <stdio.h>
 #include <math.h>
 
-float persen(float bil, float per)
+float persen(float bil)
 {
-	float hasil;
-	printf("kalkulator persen\n");
-	printf("Masukkan angka ");
-	scanf("%f", &bil);
-	printf("Masukkan persen ");
-	scanf("%f", &per);
-	hasil = bil * per/100;
-	return hasil;
+	return bil/100;
 }
 
-void tampilPersen()
-{
-	float bil1, per1, hasil;
-	hasil = persen(bil1, per1);
-	printf("%.2f", hasil);
-}
 
-int faktorial(int bil)
+float faktorial(float bil)
 {
-	scanf("%d", &bil);
+//	scanf("%d", &bil);
 	if(bil == 0)
 	{
 		return 1;
 	}
-	else{
-		int hasil = 1, i = 0;
+	else
+	{
+		int result = 1, i = 0;
 		while(i < bil)
 		{
-			hasil = hasil*(bil-i);
+			result = result*(bil-i);
 			i++;
 		}
-		return hasil;	
+		return result;	
 	}
 }
 
-void tampilFaktorial()
+float asinus(float bil)
 {
-	int jumlah, angka;
-	jumlah = faktorial(angka);
-	printf("%d", jumlah);
+	return asin(bil)*(180/phi);
 }
+
+float acosinus(float bil)
+{
+	return acos(bil)*(180/phi);
+}
+
+float atangen(float bil)
+{
+	return atan(bil)*(180/phi);
+}
+
+//void tampilPersen()
+//{
+//	float bil1, per1, hasil;
+//	hasil = persen(bil1, per1);
+//	printf("%.2f", hasil);
+//}
+
+//void tampilFaktorial()
+//{
+//	int jumlah, angka;
+//	jumlah = faktorial(angka);
+//	printf("%d", jumlah);
+//}
