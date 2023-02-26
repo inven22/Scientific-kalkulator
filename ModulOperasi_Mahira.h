@@ -3,9 +3,7 @@
 #define phi 3.14159265358979323846
 
 float persen(float bil);
-//void tampilPersen();
 float faktorial(float bil);
-//void tampilFaktorial();
 float asinus(float bil);
 float acosinus(float bil);
 float atangen(float bil);
@@ -54,17 +52,3 @@ float atangen(float bil)
 {
 	return atan(bil)*(180/phi);
 }
-
-//void tampilPersen()
-//{
-//	float bil1, per1, hasil;
-//	hasil = persen(bil1, per1);
-//	printf("%.2f", hasil);
-//}
-
-//void tampilFaktorial()
-//{
-//	int jumlah, angka;
-//	jumlah = faktorial(angka);
-//	printf("%d", jumlah);
-//}
