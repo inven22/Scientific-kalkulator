@@ -21,7 +21,6 @@ float persen(float bil)
 
 float faktorial(float bil)
 {
-//	scanf("%d", &bil);
 	if(bil == 0)
 	{
 		return 1;
