@@ -1,10 +1,10 @@
 #ifndef modulOperasi_Naufal_h
 #define modulOperasi_Naufal_h
-double operasiPembagian(double angka1, double angka2);
+double pembagian(double angka1, double angka2);
 //void tampilPembagian();
-float operasiModulus(float angka1, float angka2);
+float modulus(float angka1, float angka2);
 //void tampilModulus();
-double operasiMutlak(double angka1);
+double mutlak(double angka1);
 //void tampilMutlak();
 
 #endif
@@ -22,7 +22,7 @@ double pembagian(double a, double b) {
 }
 
 
-double modulus(float a, float b){
+float modulus(float a, float b){
 	return a % b;
 }
 
