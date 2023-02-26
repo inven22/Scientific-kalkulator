@@ -21,12 +21,21 @@ float pembulatan(float num);
 #include <stdlib.h>
 #include <math.h>
 
+<<<<<<< HEAD
 float penjumlahan(float bil1, float bil2) {
     return bil1 + bil2;
 }
 
 float pengurangan(float bil1, float bil2) {
     return bil1 - bil2;
+=======
+double penjumlahan(double a, double b) {
+    return a + b;
+}
+
+double pengurangan(double a, double b) {
+    return a - b;
+>>>>>>> 94ae6c17ea263612bb510af3b8e47f3aca8355a2
 }
 
 float sinus(float degree){

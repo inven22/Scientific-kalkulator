@@ -1,6 +1,10 @@
 #ifndef ModulOperasi_Tendy_h
 #define ModulOperasi_Tendy_h
+//<<<<<<< Agista
 //<<<<<<< HEAD
+=======
+//<<<<<<< HEAD
+//>>>>>>> master
 #define MAX_LENGTH 100
 //kamus
 typedef struct{
@@ -24,7 +28,6 @@ int pop_oprtr(Stack *s);
 int is_operator(char c);
 int getpriority(char x);
 int evaluasi_ekspresi(char* ekspresi);
-//=======
 
 //void tampil_perpangkatan();
 int Perpangkatan(int bilangan, int pangkat);
@@ -34,7 +37,9 @@ int Perkalian(int bilangan1, int bilangan2);
 //void input_matriks();
 //double akar_pangkat_n(int power,int konst);
 //void tampil_akar();
-//>>>>>>> master
+double akar_pangkat_n(int power,int konst);
+//void tampil_akar();
+
 #endif
 #include <stdio.h>
 #include <stdlib.h>
@@ -117,7 +122,7 @@ int akarPangkatN(int power,int konst){
 //    printf("hasilnya adalah %.2lf",root);
 //}
 
-//<<<<<<< HEAD
+
 /*    root = pow(konst, 1.0/power);
 	return root;
 }*/
@@ -138,8 +143,6 @@ void push_operand(Stack *s,int item){
         printf("Stack is full\n");
     }
 }
-//=======
-//>>>>>>> master
 
 int pop_operand(Stack *s){
 	 if (s->top_operand >= 0) {
@@ -179,6 +182,7 @@ int getpriority(char x){
 		return 2;
 	}else if(x=='^'){
 		return 3;
+
 	}else if(x=='r'){
 		return 4;
 	}else if(x=='mod'){
