@@ -38,7 +38,7 @@ void tampil(){
 }
 
 
-//double naturalloga(double number)
+//int naturalloga(double number)
 //{
 //	return log(number);
 //}
@@ -60,7 +60,7 @@ void tampil(){
 
 
 
-//double naturalloga(double number)
+//int naturalloga(double number)
 //{
 //	return log(number);
 //}
