@@ -8,14 +8,13 @@ int top_operator,top_operand;
 char oprtr[MAX_LENGTH];
 float operand[MAX_LENGTH];
 }Stack;
-//
+//modul
 void tampil_perpangkatan();
 float Perpangkatan(float bilangan, float pangkat);
-int Perkalian(int bilangan1, int bilangan2);
+float Perkalian(float bilangan1, float bilangan2);
 void tampil_perkalian();
 void input(char *operasi);
 void input_matriks();
-double akar_pangkat_n(int power,double konst);
 void tampil_akar();
 void push_oprtr(Stack *s,char item);
 void push_operand(Stack *s,float item);
@@ -24,20 +23,11 @@ int pop_oprtr(Stack *s);
 int is_operator(char c);
 int getpriority(char x);
 float evaluasi_ekspresi(char* ekspresi);
+float akar_pangkat_n(int power,int konst);
 //void tampil_perpangkatan();
 
-int Perkalian(int bilangan1, int bilangan2);
-//void tampil_perkalian();
-//void input(char *operasi);
-//void input_matriks();
-//double akar_pangkat_n(int power,int konst);
 
 
-//void tampil_akar();
-
-//double akar_pangkat_n(int power,int konst);
-
-//void tampil_akar();
 
 #endif
 #include <stdio.h>
@@ -50,7 +40,16 @@ int Perkalian(int bilangan1, int bilangan2);
 #include "ModulOperasi_Mahira.h"
 #include "ModulOperasiAhmad.h"
 
+float Perkalian(float bilangan1, float bilangan2){
+	return bilangan1*bilangan2;
+}
 
+float akar_pangkat_n(int power,int konst){
+	float root;
+	root = pow(konst, 1.0/power);
+	return root;
+
+}
 
 
 float Perpangkatan(float bilangan, float pangkat){
@@ -113,24 +112,24 @@ int pop_oprtr(Stack *s){
 }
 
 int is_operator(char c){
-	if(c=='+'||c=='-'||c=='*'||c=='/'||c=='^'||c=='s'||c=='c'||c=='t'||c=='!'||c=='l'){
+	if(c=='+'||c=='-'||c=='*'||c=='/'||c=='^'||c=='s'||c=='c'||c=='t'||c=='!'||c=='l'||c=='S'||c=='C'||c=='T'||c=='V'||c=='%'||c=='m'||c=='r'||c=='|'){
 		return 1;
 	}else{
 		return 0;
 	}
 }
 int getpriority(char x){
-	if(x=='('){
+	if(x=='('||x=='|'){
 		return 0;
 	}else if(x=='+'||x=='-'){
 		return 1;
-	}else if(x=='*'||x=='/'){
+	}else if(x=='*'||x=='/'||x=='m'){
 		return 2;
-	}else if(x=='^'||x=='l'){
+	}else if(x=='^'||x=='l'||x=='V'){
 		return 3;
-	}else if(x=='s'||x=='c'||x=='t'){
+	}else if(x=='s'||x=='c'||x=='t'||x=='S'||x=='C'||x=='T'){
 		return 3;
-	}else if(x=='!'){
+	}else if(x=='!'||x=='%'||x=='r'){
 		return 4;
 	}
 	
@@ -181,54 +180,7 @@ float evaluasi_ekspresi(char* ekspresi){
 						hasil=penjumlahan(opr2,opr1);
 						break;
 					case'-':
-						hasil=opr2-opr1;
-						break;
-					case'*':
-						hasil=opr2*opr1;
-						break;
-					case'/':
-						hasil=pembagian(opr2,opr1);
-						break;
-					case'^':
-						hasil=pow(opr2,opr1);
-						break;
-					case's':
-					  	hasil=sinus(opr1);
-					  	break;
-					case'c':
-					  	hasil=cosinus(opr1);
-					  	break;
-					case't':
-					  	hasil=tangen(opr1);
-					  	break;
-					case'!':
-						hasil=faktorial(opr1);
-						break;
-					case'l':
-					  	hasil=loga(opr1);
-					  	break;
-			 }
-				push_operand(&s,hasil);
-				fflush(stdin);
-				
-			
-		 }
-		 push_oprtr(&s,token);
-		}
-		}
-	while(s.top_operator>=0){
-		op=pop_oprtr(&s);
-		opr1=pop_operand(&s);
-		if(s.top_operand>=0){
-		opr2=pop_operand(&s);
-		}
-				
-		switch(op){
-					case'+':
-						hasil=opr2+opr1;
-						break;
-					case'-':
-						hasil=opr2-opr1;
+						hasil=pengurangan(opr2,opr1);
 						break;
 					case'*':
 						hasil=opr2*opr1;
@@ -252,8 +204,103 @@ float evaluasi_ekspresi(char* ekspresi){
 						hasil=faktorial(opr1);
 						break;
 					case'l':
-						hasil=loga(opr1);
+					  	hasil=log_a_to_base_b(opr1,opr2);
+					  	break;
+					case'S':
+					  	hasil=asinus(opr1);
+					  	break;
+					case'C':
+						hasil=acosinus(opr1);
 						break;
+					case'T':
+					  	hasil=atangen(opr1);
+					  	break;
+					case'V':
+					  	hasil=akar_pangkat_n(opr2,opr1);
+					  	break;
+					case'%':
+					  	hasil=persen(opr1);
+					  	break;
+					case'm':
+					  	hasil=modulus(opr2,opr1);
+					  	break;
+					case'r':
+					  	hasil=pembulatan(opr1);
+					  	break;
+					case'|':
+					  	hasil=mutlak(opr1);
+					  	break;
+			 }
+				push_operand(&s,hasil);
+				fflush(stdin);
+				
+			
+		 }
+		 push_oprtr(&s,token);
+		}
+		}
+	while(s.top_operator>=0){
+		op=pop_oprtr(&s);
+		opr1=pop_operand(&s);
+		if(s.top_operand>=0){
+		opr2=pop_operand(&s);
+		}
+				
+		switch(op){
+					case'+':
+						hasil=penjumlahan(opr2,opr1);
+						break;
+					case'-':
+						hasil=pengurangan(opr2,opr1);
+						break;
+					case'*':
+						hasil=Perkalian(opr2,opr1);
+						break;
+					case'/':
+						hasil=pembagian(opr2,opr1);
+						break;
+					case'^':
+						hasil=Perpangkatan(opr2,opr1);
+						break;
+					case's':
+					  	hasil=sinus(opr1);
+					  	break;
+					case'c':
+					  	hasil=cosinus(opr1);
+					  	break;
+					case't':
+					  	hasil=tangen(opr1);
+					  	break;
+					case'!':
+						hasil=faktorial(opr1);
+						break;
+					case'l':
+						hasil=log_a_to_base_b(opr1,opr2);
+						break;
+					case'S':
+					  	hasil=asinus(opr1);
+					  	break;
+					case'C':
+						hasil=acosinus(opr1);
+						break;
+					case'T':
+					  	hasil=atangen(opr1);
+					  	break;
+					case'V':
+					  	hasil=akar_pangkat_n(opr2,opr1);
+					  	break;
+					case'%':
+					  	hasil=persen(opr1);
+					  	break;
+					case'm':
+					  	hasil=modulus(opr2,opr1);
+					  	break;
+					case'r':
+					  	hasil=pembulatan(opr1);
+					  	break;
+					case'|':
+					  	hasil=mutlak(opr1);
+					  	break;
 			 }
 				push_operand(&s,hasil);
 				fflush(stdin);
