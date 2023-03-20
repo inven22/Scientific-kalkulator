@@ -9,6 +9,7 @@ char oprtr[MAX_LENGTH];
 float operand[MAX_LENGTH];
 }Stack;
 //modul
+float operasi_trigono(char* tes,float oprtr);
 void tampil_perpangkatan();
 float Perpangkatan(float bilangan, float pangkat);
 float Perkalian(float bilangan1, float bilangan2);
@@ -45,10 +46,31 @@ float Perkalian(float bilangan1, float bilangan2){
 	return bilangan1*bilangan2;
 }
 
-float akar_pangkat_n(int power,int konst){
-	float root;
-	root = pow(konst, 1.0/power);
-	return root;
+float akar_pangkat_n(int x,int n){
+ double eps = 1e-8;  // toleransi error
+    double a, b, c;
+    if (x >= 0) {  // jika x >= 0, maka interval awal adalah [0, x]
+        a = 0;
+        b = x;
+    } else {       // jika x < 0 dan n ganjil, maka interval awal adalah [x, 0]
+        if (n % 2 == 1) {
+            a = x;
+            b = 0;
+        } else {   // jika x < 0 dan n genap, maka akar tidak terdefinisi
+            printf("Akar tidak terdefinisi\n");
+            return 0;
+        }
+    }
+    c = (a + b) / 2;
+    while (fabs(pow(c, n) - x) > eps) {
+        if (pow(c, n) < x) {
+            a = c;
+        } else {
+            b = c;
+        }
+        c = (a + b) / 2;
+    }
+    return c;
 
 }
 
@@ -111,9 +133,30 @@ int pop_oprtr(Stack *s){
         return -1;
     }
 }
-
+float operasi_trigono(char* tes,float oprtr){
+	float hasil;
+	if (strcmp(tes,"sin(")==0){
+		hasil=sinus(oprtr);
+		return hasil;
+	}else if (strcmp(tes,"cos(")==0){
+		hasil=cosinus(oprtr);
+		return hasil;
+	}else if (strcmp(tes,"tan(")==0){
+		hasil=tangen(oprtr);
+		return hasil;
+	}else if (strcmp(tes,"arccos(")==0){
+		hasil=cosinus(oprtr);
+		return hasil;
+	}else if (strcmp(tes,"cos(")==0){
+		hasil=cosinus(oprtr);
+		return hasil;
+	}else{
+		printf("format salah");
+		return 0;
+	}
+}
 int is_operator(char c){
-	if(c=='+'||c=='-'||c=='*'||c=='/'||c=='^'||c=='s'||c=='c'||c=='t'||c=='!'||c=='l'||c=='S'||c=='C'||c=='T'||c=='V'||c=='%'||c=='m'||c=='r'||c=='|'){
+	if(c=='+'||c=='-'||c=='*'||c=='/'||c=='^'||c=='%'||c=='!'||c=='|'||c=='V'){
 		return 1;
 	}else{
 		return 0;
@@ -127,8 +170,6 @@ int getpriority(char x){
 	}else if(x=='*'||x=='/'||x=='m'){
 		return 2;
 	}else if(x=='^'||x=='l'||x=='V'){
-		return 3;
-	}else if(x=='s'||x=='c'||x=='t'||x=='S'||x=='C'||x=='T'){
 		return 3;
 	}else if(x=='!'||x=='%'||x=='r'){
 		return 4;
@@ -153,45 +194,18 @@ float operasi1(float opr1,float opr2,char op){
 	}else if(op=='^'){
 		hasil=Perpangkatan(opr2,opr1);
 		return hasil;
-	}else if(op=='s'){
-			hasil=sinus(opr1);
-			return hasil;
-	}else if(op=='c'){
-		hasil=cosinus(opr1);
-		return hasil;
-	}else if(op=='t'){
-		hasil=tangen(opr1);
-		return hasil;
 	}else if(op=='!'){
 		hasil=faktorial(opr1);
-		return hasil;
-	}else if(op=='l'){
-		hasil=log_a_to_base_b(opr1,opr2);
-		return hasil;
-	}else if(op=='S'){
-		hasil=asinus(opr1);
-		return hasil;
-	}else if(op=='C'){
-		hasil=acosinus(opr1);
-	}else if(op=='T'){
-		hasil=atangen(opr1);
-		return hasil;
-	}else if(op=='V'){
-		hasil=akar_pangkat_n(opr2,opr1);
 		return hasil;
 	}else if(op=='%'){
 		hasil=persen(opr1);
 		return hasil;
-	}else if(op=='m'){
-		hasil=modulus(opr2,opr1);
-		return hasil;
-	}else if(op=='r'){
-		hasil=pembulatan(opr1);
-		return hasil;
 	}else if(op=='|'){
 		hasil=mutlak(opr1);
 		return hasil;
-	}	
+	}else if(op=='V'){
+		hasil=akar_pangkat_n(opr1,opr2);
+	}
 	
 }
 
@@ -225,6 +239,7 @@ float evaluasi_ekspresi(char* ekspresi){
 			push_oprtr(&s,token);
 		}else if(token==')'){
 			while(s.oprtr[s.top_operator]!='('){
+			
 				op=pop_oprtr(&s);
 				opr1=pop_operand(&s);
 				opr2=pop_operand(&s);
@@ -248,6 +263,29 @@ float evaluasi_ekspresi(char* ekspresi){
 			
 		 }
 		 push_oprtr(&s,token);
+		}else if(token=='s'||token=='c'||token=='t'){
+		float hasil3=0,hasil2;
+		int o=1,t=1;
+		char valid[5];
+		valid[0]=token;
+		i++;
+		while(t<4){
+			valid[o]=ekspresi[i];
+			i++;
+			o++;
+			t++;
+		}
+		while(isdigit(ekspresi[i])&&ekspresi[i]!=')'){
+			hasil3=hasil3*10+(ekspresi[i]-'0');
+			i++;
+		}
+		if(ekspresi[i]==')'){
+			hasil2=operasi_trigono(valid,hasil3);
+			push_operand(&s,hasil2);
+		}else{
+			printf("format yang dimasukkan salah");
+			break;
+		}
 		}
 		}
 	while(s.top_operator>=0){
