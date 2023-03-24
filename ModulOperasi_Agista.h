@@ -1,100 +1,85 @@
 #ifndef ModulOperasi_Agista_h
 #define Moduloperasi_Agista_h
-#define phi 3.14
+#define phi 3.14159265358979323846
 
-float penjumlahan(float bil1, float bil2);
-float pengurangan(float bil1, float bil2);
-float sinus(float degree);
-float cosinus(float degree);
-float tangen(float degree);
-float pembulatan(float num);
-//void tampilJumlah();
-//void tampilKurang();
-//void tampilSin();
-//void tampilCos();
-//void tampilTan();
-//void tampilPembulatan();
+double penjumlahan(double a, double b);
+double pengurangan(double a, double b);
+double sinus(double degree);
+double cosinus(double degree);
+double tangen(double degree);
+double to_radian(double degree);
+double pembulatan(double num);
 
 #endif
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+//#include <math.h>
 
-<<<<<<< HEAD
-float penjumlahan(float bil1, float bil2) {
-    return bil1 + bil2;
-}
-
-float pengurangan(float bil1, float bil2) {
-    return bil1 - bil2;
-=======
 double penjumlahan(double a, double b) {
     return a + b;
 }
 
 double pengurangan(double a, double b) {
     return a - b;
->>>>>>> 94ae6c17ea263612bb510af3b8e47f3aca8355a2
 }
 
-float sinus(float degree){
-	float hasil;
-	hasil = (sin(degree*(phi/180)));
-	return hasil;
-}
-
-float cosinus(float degree){
-	float hasil;
-	hasil = (cos(degree*(phi/180)));
-	return hasil;
-}
-
-float tangen(float degree){
-	float hasil;
-	hasil = (tan(degree*(phi/180)));
-	return hasil;
-}
-
-float pembulatan(float num){
-    return round(num);
-}
-
-//void tampilSin(){
-//	float degree, hasilSin;
-//	hasilSin=sinus(degree);
-//	printf("sin nilai tersebut adalah : %f\n ", hasilSin);
-//} 
-//
-//void tampilCos(){
-//	float degree, hasilCos;
-//	hasilCos=cosinus(degree);
-//	printf("cos nilai tersebut adalah : %f\n ", hasilCos);
-//} 
-//
-//void tampilTan(){
-//	float degree, hasilTan;
-//	hasilTan=tangen(degree);
-//	printf("tan nilai tersebut adalah : %f\n ", hasilTan);
-//} 
-//
-//void tampilJumlah(){
-//	float bil1, bil2, hasilJumlah;
-//	hasilJumlah=jumlah(bil1, bil2);
-//	printf("Hasil dari penjumlahan : %f\n", hasilJumlah);
-//}
-//
-//void tampilKurang(){
-//	float bil1, bil2, hasilKurang;
-//	hasilKurang=kurang(bil1, bil2);
-//	printf("Hasil dari pengurangan : %f\n", hasilKurang);
-//}
-//
-//void tampilPembulatan(){
-//	double num;
+//double sinus(double degree){
 //	double hasil;
-//	printf("\nMasukan floating-point number : ");
-//    scanf("%lf", &num);
-//    hasil=pembulatan(num);
-//    printf("Nilai pembulatan : %.0lf\n", hasil);
+//	hasil = (sin(degree*(phi/180)));
+//	return hasil;
 //}
+//
+//double cosinus(double degree){
+//	double hasil;
+//	hasil = (cos(degree*(phi/180)));
+//	return hasil;
+//}
+//
+//double tangen(double degree){
+//	double hasil;
+//	hasil = (tan(degree*(phi/180)));
+//	return hasil;
+//}
+//
+//double pembulatan(double num){
+//    return round(num);
+//}
+
+// konversi sudut dalam derajat ke radian
+double to_radian(double degree) {
+    return degree * (3.14159265359 / 180.0);
+}
+
+// menghitung nilai sinus
+double sinus(double degree) {
+    double radian = to_radian(degree);
+    double result = radian;
+    double term = radian;
+    int i;
+
+    for (i = 1; i <= 10; i++) {
+        term = -term * radian * radian / ((2 * i) * (2 * i + 1));
+        result += term;
+    }
+
+    return result;
+}
+
+// menghitung nilai kosinus
+double cosinus(double degree) {
+    double radian = to_radian(degree);
+    double result = 1;
+    double term = 1;
+	int i;
+    for (i = 1; i <= 10; i++) {
+        term = -term * radian * radian / ((2 * i - 1) * (2 * i));
+        result += term;
+    }
+
+    return result;
+}
+
+double tangen(double degree) {
+    return sinus(degree) / cosinus(degree);
+} 
